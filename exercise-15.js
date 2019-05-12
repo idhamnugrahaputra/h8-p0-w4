@@ -7,8 +7,8 @@ function highestScore (students) {
 
   for(let a in students){
     let objData = students[a]
-
   }
+  return obj
 }
 
 // TEST CASE

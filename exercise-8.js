@@ -1,16 +1,18 @@
 function tukarBesarKecil(kalimat) {
-  let output = ''
+  var output = ''
   for (var i = 0; i < kalimat.length; i++) {
-    let tmp = kalimat.charCodeAt(i)
-    if (tmp >= 65 && tmp <= 90) {
-        output += kalimat[i].toLowerCase()
-    }else if (tmp >= 97 && tmp <= 122) {
-      output += kalimat[i].toUpperCase()
+    var numStr = kalimat.charCodeAt(i)
+    if (numStr >= 65 && numStr <= 90) {
+      newStr = String.fromCharCode(numStr + 32)
+      output += newStr
+    }else if (numStr >= 97 && numStr <= 122) {
+      newStr = numStr - 32
+      output += String.fromCharCode(newStr)
     }else {
       output += kalimat[i]
     }
   }
-  return output
+  return output;
 }
 
 // TEST CASES

@@ -1,16 +1,15 @@
 function cariMedian(arr) {
-    if (arr.length % 2 !== 0) {
-      let mid = Math.floor(arr.length / 2);
-      return arr[mid]
-    }
-
-    if (arr.length % 2 === 0) {
-      let a = arr.length / 2
-      let kiri = arr[a-1]
-      let kanan = arr[a]
-      let output = (kiri + kanan) / 2
-      return output
-    }
+  var result ;
+  var length = arr.length
+  if (length % 2 != 0) {
+    tmp = Math.floor(length/2)
+    result = arr[tmp]
+  }
+  if (length % 2 == 0) {
+    tmp = Math.floor(length/2)
+    result = ((arr[tmp] + arr[tmp-1]) / 2)
+  }
+  return result
 }
 
 // TEST CASES

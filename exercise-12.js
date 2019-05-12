@@ -1,36 +1,32 @@
 function countProfit(shoppers) {
-  if (shoppers.length === 0) {
-    return shoppers
-  }
-  let listBarang = [ ['Sepatu Stacattu', 1500000, 10],
+  var output = []
+  var listBarang = [ ['Sepatu Stacattu', 1500000, 10],
                      ['Baju Zoro', 500000, 2],
                      ['Sweater Uniklooh', 175000, 1]
                    ];
-  let output = []
-  for (let a of listBarang) {
-    let obj = {
-      'product':a[0],
-      'shoppers':[],
-      'leftOver':0,
-      'totalProfit':0
-    }
 
-    let amount = []
-    for (let b of shoppers) {
-      if (b.product == a[0] && b.amount <= a[2]) {
-        amount.push(b.amount)
-        a[2]=a[2]-b.amount
-        obj.shoppers.push(b.name)
-      }
-      obj.leftOver=a[2]
+  for (var i = 0; i < listBarang.length; i++) {
+    var obj = {product : listBarang[i][0],
+                shoppers : [],
+                leftOver : listBarang[i][2],
+                totalProfit : 0
+                }
+    for (var k = 0; k < shoppers.length; k++) {
+        if (shoppers[k].product == listBarang[i][0]) {
+          if (obj.leftOver >= shoppers[k].amount) {
+            obj.shoppers.push(shoppers[k].name)
+            obj.leftOver = obj.leftOver - shoppers[k].amount
+            obj.totalProfit = (listBarang[i][2]-obj.leftOver) * listBarang[i][1]
+          }
+        }
     }
-    let totalProfit = amount.reduce((a,b) => {
-      return a+b
-    },0)
-    obj.totalProfit = totalProfit*a[1]
-    output.push(obj)
+    output.push(obj);
   }
-return output
+  if (shoppers.length === 0) {
+    return []
+  }else {
+    return output
+  }
 }
 
 // TEST CASES

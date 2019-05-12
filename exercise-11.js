@@ -1,38 +1,33 @@
 function shoppingTime(memberId, money) {
-  if (arguments.length === 0 || memberId == '') {
-    return 'Mohon maaf, toko X hanya berlaku untuk member saja'
+  if (memberId == '' || arguments.length == 0) {
+    return ('Mohon maaf, toko X hanya berlaku untuk member saja')
   }else if (money < 50000) {
-    return 'Mohon maaf, uang tidak cukup'
+    return ('Mohon maaf, uang tidak cukup')
+  }else if (memberId == '' && money == '') {
+    return ('Mohon maaf, toko X hanya berlaku untuk member saja')
   }
-  let key = ['memberId', 'money', 'listPurchased','changeMoney']
-  let obj = {'Sepatu Stacattu' : 1500000,
-          'Baju Zoro' : 500000,
-          'Baju H&N' : 250000,
-          'Sweater Uniklooh' : 175000,
-          'Casing Handphone' : 50000
-          }
-  for (let a of key) {
-    console.log(key);
+  var key = ['memberId', 'money', 'listPurchased','changeMoney']
+  var obj = {'Sepatu Stacattu' : 1500000,
+            'Baju Zoro' : 500000,
+            'Baju H&N' : 250000,
+            'Sweater Uniklooh' : 175000,
+            'Casing Handphone' : 50000
+            }
+  var output ={}
+  for (var i = 0; i < key.length; i++) {
+    output[key[0]] = memberId
+    output[key[1]] = money
+    output[key[2]] = []
+    output[key[3]] = 0
   }
-
-  let tmpObj = {}
-  if (memberId) {
-    tmpObj['memberId']=memberId
-  }
-  if (money) {
-    tmpObj['money']=money
-  }
-
-  let tmp = []
-  for (let b in obj) {
-    if (money >= obj[b]) {
-      tmp.push(b)
-      money = money - obj[b]
+  output[key[3]] = money
+  for (var a in obj) {
+    if (output[key[3]] >= obj[a]) {
+      output[key[3]] = output[key[3]] - obj[a]
+      output[key[2]].push(a)
     }
   }
-  tmpObj['listPurchased'] = tmp
-  tmpObj['changeMoney'] = money
-  return tmpObj
+  return output
 }
 
 // TEST CASES

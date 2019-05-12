@@ -1,10 +1,32 @@
 function checkAB(num) {
-  for (var i = 0; i < num.length -3; i++) {
-    if ((num[i] === 'a' && num[i+4] === 'b') || (num[i] == 'b' && num[i+4]==='a')) {
-      return true
+  var indexA = []
+  var indexB = []
+
+  for (var i = 0; i < num.length; i++) {
+    if (num[i] == 'a') {
+      indexA.push(i)
+    }
+    if (num[i] == 'b') {
+      indexB.push(i)
     }
   }
-  return false
+  if (indexA.length == 0 || indexB.length == 0) {
+    return false
+  }
+  var hasil ;
+  for (var j = 0; j < indexA.length; j++) {
+    for (var k = 0; k < indexB.length; k++) {
+      var jarak = Math.abs(indexA[j]-indexB[k])
+      if (jarak == 4) {
+        hasil = jarak
+      }
+    }
+  }
+  if (hasil == 4) {
+    return true
+  }else {
+    return false
+  }
 }
 
 // TEST CASES

@@ -1,17 +1,17 @@
-
 function deepSum (arr) {
-  if (arr.length === 0) {
-    return 'no number'
-  }
-  let output = 0
-  for (let i = 0; i < arr.length; i++) {
-    for (let j = 0; j < arr[i].length; j++) {
-      for (let k = 0; k < arr[i][j].length; k++) {
-        output += arr[i][j][k]
+  var output = 0
+  for (var i = 0; i < arr.length; i++) {
+    for (var j = 0; j < arr[i].length; j++) {
+      for (var k = 0; k < arr[i][j].length; k++) {
+        output += (arr[i][j][k]);
       }
     }
   }
-  return output
+  if (arr.length == 0) {
+    return 'No number'
+  }else {
+    return output
+  }
 }
 
 //TEST CASE

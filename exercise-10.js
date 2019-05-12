@@ -1,17 +1,24 @@
 function changeMe(arr) {
-  let date = new Date()
-  let year = date.getFullYear()
-  let num = 1
-  for (let a of arr) {
-    let obj = {
-      firstName: a[0] !== undefined ? a[0] : 'invalid firstName',
-      lastName: a[1] !== undefined ? a[1] : 'invalid lastName',
-      gender: a[2] !== undefined ? a[2] : 'invalid gender',
-      age : a[3] !== undefined ? year - a[3] : 'invalid Birt Year'
+  var year = 2019
+  var num = 1
+  for (var i = 0; i < arr.length; i++) {
+    var obj = {
+      firstName : arr[i][0],
+      lastName : arr[i][1],
+      gender : arr[i][2],
+      age : arr[i][3]
     }
-    console.log(num +'.'+a[0]+' '+a[1] + ' :');
+    if (obj.age != undefined) {
+      obj.age = year - obj.age
+    }else {
+      obj.age = 'Invalid Birth Year'
+    }
+    console.log(num+'.'+' '+obj['firstName']+' '+obj['lastName']+':');
     console.log(obj);
     num++
+  }
+  if (arr.length == 0) {
+    console.log('""');
   }
 }
 

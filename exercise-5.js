@@ -1,7 +1,14 @@
 function ubahHuruf(kata) {
-  var output =''
+  var output = ''
   for (var i = 0; i < kata.length; i++) {
-    output += String.fromCharCode(kata[i].charCodeAt(kata[i]) + 1);
+    tmp = kata[i].charCodeAt()
+    if (tmp == 122) {
+      output += String.fromCharCode(97)
+    }else if (tmp == 90) {
+      output += String.fromCharCode(65)
+    }else {
+      output += String.fromCharCode(tmp + 1)
+    }
   }
   return output
 }

@@ -1,9 +1,17 @@
 function graduates (students) {
-  for (var i = 0; i < students.length; i++) {
-    for (var j = 0; j < students[i].length; j++) {
-      console.log(students[i][j]);
+  var output = {}
+
+  for (var x in students) {
+    var Class = students[x].class
+    if (students[x].score > 75) {
+      if (output[Class] == undefined) {
+        output[Class] = [{name: students[x].name, score: students[x].score}]
+      }else {
+        output[Class].push({name: students[x].name, score: students[x].score})
+      }
     }
   }
+  return output
 }
 
 console.log(graduates([

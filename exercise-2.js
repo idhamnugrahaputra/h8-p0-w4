@@ -1,34 +1,25 @@
 function fpb(angka1, angka2) {
-  var tmp1 = []
-  var tmp2 = []
-
-  for (let i = 1; i <= angka1; i++) {
-    for (let j = 1; j <= angka1;j++) {
-      let faktor1 = i*j
-      if (faktor1 == angka1) {
-        tmp1.push(i)
+  var factorAngka1 = []
+  var factorAngka2 = []
+  var result = []
+  for (var i = 1; i <= angka1; i++) {
+    if (angka1 % i == 0) {
+      factorAngka1.push(i)
+    }
+  }
+  for (var j = 1; j <= angka2; j++) {
+    if (angka2 % j == 0) {
+      factorAngka2.push(j)
+    }
+  }
+  for (var k = 0; k < factorAngka1.length; k++) {
+    for (var m = 0; m < factorAngka2.length; m++) {
+      if (factorAngka1[k] == factorAngka2[m]) {
+        result.push(factorAngka1[k])
       }
     }
   }
-
-  for (let i = 1; i <= angka2; i++) {
-    for (let j = 1; j <= angka2; j++) {
-      let faktor2 = i*j
-      if (faktor2 == angka2) {
-        tmp2.push(i)
-      }
-    }
-  }
-
-  let output = []
-  for (let a of tmp1) {// for of adlah melooping isi dri nilai suatu variable oatau let 
-    for (let b of tmp2) {
-      if (a === b) {
-        output.push(a)
-      }
-    }
-  }
-  return Math.max(...output)
+  return Math.max(...result)
 }
 
 // TEST CASES
