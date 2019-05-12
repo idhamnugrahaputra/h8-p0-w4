@@ -1,14 +1,37 @@
-
 function highestScore (students) {
-  // Code disini
-  let obj = {
-    name:'' , score: 0
+  var output = {}
+
+  for (var x in students) {
+    var Class = students[x].class
+    if (output[Class] == undefined) {
+      output[Class] = {name : students[x].name, score : students[x].score}
+    }else {
+      output[Class] = output[Class],{name : students[x].name, score : students[x].score}
+    }
   }
 
-  for(let a in students){
-    let objData = students[a]
+  for (var x in output) {
+    if (output.Class== 'foxes') {
+      if (output[x].score > output[x+1].score) {
+        output.Class = output[x]
+      }else {
+        output.Class = output[x+1]
+      }
+    }else if (output.Class == 'wolves') {
+      if (output[x].score > output[x+1].score) {
+        output.Class = output[x]
+      }else {
+        output.Class = output[x+1]
+      }
+    }else if (output.Class == 'tigers') {
+      if (output[x].score > output[x+1].score) {
+        output.Class = output[x]
+      }else {
+        output.Class = output[x+1]
+      }
+    }
   }
-  return obj
+  return output
 }
 
 // TEST CASE
